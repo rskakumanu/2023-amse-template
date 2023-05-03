@@ -15,7 +15,7 @@ The analysis helps XY to do YZ.
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
 ### Datasource1: ExampleSource
-* Metadata URL: https://mobilithek.info/offers/-6901989592576801458
+* Metadata URL: [https://mobilithek.info/offers/-6901989592576801458](https://mobilithek.info/offers/-8862870771136450928)
 * Data URL: https://raw.githubusercontent.com/od-ms/radverkehr-zaehlstellen/main/100035541/2019-01.csv
 * Data Type: CSV
 
