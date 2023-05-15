@@ -40,6 +40,6 @@ Contains Features: Ground Temperature 5 cm under ground in °Celcius, Wind speed
 - [ ] Exploratory data analysis
 - [ ] Reporting
 - [ ] Automated Testing
-- [ ] Continuous Integration
+- [ ] Continuous Integration 
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
