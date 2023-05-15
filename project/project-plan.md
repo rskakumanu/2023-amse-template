@@ -34,12 +34,12 @@ Contains Features: Ground Temperature 5 cm under ground in °Celcius, Wind speed
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Example Issue [#1][i1]
-[x] Data Identification and Gathering
-[] Automated Data Pipelines
-[] Data Preprocessing
-[] Exploratory data analysis
-[] Reporting
-[] Automated Testing
-[] Continuous Integration
+- [x] Data Identification and Gathering
+- [] Automated Data Pipelines
+- [] Data Preprocessing
+- [] Exploratory data analysis
+- [] Reporting
+- [] Automated Testing
+- [] Continuous Integration
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
