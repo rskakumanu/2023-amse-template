@@ -14,22 +14,19 @@ Understanding how weather conditions affect speeding behavior can have important
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
-* Metadata URL: [[https://mobilithek.info/offers/-6901989592576801458](https://mobilithek.info/offers/-8862870771136450928)](https://mobilithek.info/offers/-8862870771136450928)
-* Data URL: [https://raw.githubusercontent.com/od-ms/radverkehr-zaehlstellen/main/100035541/2019-01.csv](https://mobilithek.info/offers/-8862870771136450928)
+### Datasource1: Speed monitoring Cologne
+* Metadata URL: https://mobilithek.info/offers/-8862870771136450928
+* Data URL: https://offenedaten-koeln.de/sites/default/files/Mobilstandorte_2017-2019_0.csv
 * Data Type: CSV
 
-Recorded fines of urban speed enforcement from 2017. Record structure with transaction data (10 data fields): 
-(1) year, (2) month, (3) incident date, (4) incident time (" 5" = 00:05; " 335" = 03:35; "1211" = 12:11) 
-(5) location abbreviation (for German license plates, otherwise up to the first hyphen or blank), (6) speed, (7) exceeding, (8) vehicle type, 
-(9) office = location type ,(10) location abbreviation.
+Contains Features: year, month, incident date, incident time (" 5" = 00:05; " 335" = 03:35; "1211" = 12:11), location abbreviation (for German license plates, otherwise up to the first hyphen or blank), speed, exceeding, vehicle type, office = location type, location abbreviation.
 
-### Datasource2: Planning to use Cologne's population statistics, idenitfying the resources and proper data
-* Metadata URL: 
-* Data URL: 
+### Datasource2: Cologne | Weather History
+* Metadata URL: https://www.kaggle.com/datasets/bastitee/weather-cologne-bonn-history
+* Data URL: https://www.kaggle.com/datasets/bastitee/weather-cologne-bonn-history
 * Data Type: CSV
 
-Draft in progress
+Contains Features: Ground Temperature 5 cm under ground in °Celcius, Wind speed in m/sec, Precipitation height in mm (rain intensity), Sunshine in minutes per hour, Air temperature in °Celsius, Relative humidity in %
 
 
 ## Work Packages
@@ -37,13 +34,12 @@ Draft in progress
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Example Issue [#1][i1]
-1. Data acquisition [#2][i2]
-2. Data cleaning [#3][i3]
-3. Data integration [#4][i4]
-4. Exploratory data analysis [#5][i5]
-5. Feature engineering [#6][i6]
-6. Machine learning modeling [#7][i7]
-7. Model evaluation [#8][i8]
-8. Interpretation and reporting [#9][i9]
+1. Data Identification and Gathering
+2. Automated Data Pipelines
+3. Data Preprocessing
+4. Exploratory data analysis
+5. Reporting
+6. Automated Testing
+7. Continuous Integration
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
