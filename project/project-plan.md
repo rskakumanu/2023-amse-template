@@ -3,12 +3,12 @@
 ## Summary
 
 <!-- Describe your data science project in max. 5 sentences. -->
-Develop a data analysis project to analyze the recorded fines of urban speed enforcement in Cologne using the population statistics data.
+This project aims to analyze the relationship between speeding behavior and weather conditions in Cologne, Germany. By combining data from the Speed Monitoring Cologne dataset and the Weather Data Cologne dataset, we hope to identify any correlations between the speed of vehicles and factors such as temperature, wind speed, precipitation, and sunshine.
 
 ## Rationale
 
 <!-- Outline the impact of the analysis, e.g. which pains it solves. -->
-Use the data to identify patterns in speeding behavior, such as age and gender groups that are most likely to receive fines for speeding. Also, explore whether there are any correlations between the socio-economic status of individuals and their likelihood of being fined
+Understanding how weather conditions affect speeding behavior can have important implications for traffic safety. By analyzing these datasets, we hope to gain insights into how drivers' behavior changes in different weather conditions and what measures could be taken to improve safety on the roads.
 
 ## Datasources
 
@@ -37,14 +37,13 @@ Draft in progress
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Example Issue [#1][i1]
-2. ...
-
-Draft:
-1. Data Acquisition: Download the two datasets, the recorded fines of urban speed enforcement in Cologne and the population statistics data
-2. Data Cleaning and Preprocessing: Clean the data and preprocess it to prepare it for analysis. For example, we may want to convert categorical data to numerical data, and remove outliers and etc.
-3. Data Exploration: Conduct exploratory data analysis to get insights into the data
-4. Data Analysis: Use statistical methods to analyze the data and identify patterns in speeding behavior, such as age and gender groups that are most likely to receive fines for speeding
-5. Conclusion: Summarize the findings, discuss their implications, and suggest recommendations based on your analysis
-6. Presentation: Prepare a report and to present the findings in a clear and concise way, using visualization techniques to help your audience understand your results
+1. Data acquisition [#2][i2]
+2. Data cleaning [#3][i3]
+3. Data integration [#4][i4]
+4. Exploratory data analysis [#5][i5]
+5. Feature engineering [#6][i6]
+6. Machine learning modeling [#7][i7]
+7. Model evaluation [#8][i8]
+8. Interpretation and reporting [#9][i9]
 
 [i1]: https://github.com/jvalue/2023-amse-template/issues/1
