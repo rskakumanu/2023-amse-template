@@ -1,0 +1,206 @@
+pipeline AirportsPipeline {
+
+	// load data from web
+	block AirportsExtractor oftype HttpExtractor {
+		url: "https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv";
+	}
+
+	pipe {
+		from: AirportsExtractor;
+		to: AirportsTextFileInterpreter;
+	}
+
+	// downloaded file to textfile
+	block AirportsTextFileInterpreter oftype TextFileInterpreter {
+
+	}
+
+	pipe {
+		from: AirportsTextFileInterpreter;
+		to: AirportsCSVInterpreter;
+	}
+
+	// convert textfile to csvfile
+	block AirportsCSVInterpreter oftype CSVInterpreter {
+		delimiter: ';';
+	}
+
+	pipe {
+		from: AirportsCSVInterpreter;
+		to: column_1Writer;
+	}
+    // Rename the columns as per below link
+	// https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit
+	block column_1Writer oftype CellWriter {
+		at: cell A1;
+		write: ["Lfd. Nummer"];
+	}
+// 
+    pipe {
+		from: column_1Writer;
+		to: Column_2Writer;
+	}
+
+	block Column_2Writer oftype CellWriter {
+		at: cell B1;
+		write: ["Name des Flughafens"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_2Writer;
+		to: Column_3Writer;
+	}
+
+	block Column_3Writer oftype CellWriter {
+		at: cell C1;
+		write: ["Ort"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_3Writer;
+		to: Column_4Writer;
+	}
+
+	block Column_4Writer oftype CellWriter {
+		at: cell D1;
+		write: ["Land"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_4Writer;
+		to: Column_5Writer;
+	}
+
+	block Column_5Writer oftype CellWriter {
+		at: cell E1;
+		write: ["IATA"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_5Writer;
+		to: Column_6Writer;
+	}
+
+	block Column_6Writer oftype CellWriter {
+		at: cell F1;
+		write: ["ICAO"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_6Writer;
+		to: Column_7Writer;
+	}
+
+	block Column_7Writer oftype CellWriter {
+		at: cell G1;
+		write: ["Latitude"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_7Writer;
+		to: Column_8Writer;
+	}
+
+	block Column_8Writer oftype CellWriter {
+		at: cell H1;
+		write: ["Longitude"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_8Writer;
+		to: Column_9Writer;
+	}
+
+	block Column_9Writer oftype CellWriter {
+		at: cell I1;
+		write: ["Altitude"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_9Writer;
+		to: Column_10Writer;
+	}
+
+	block Column_10Writer oftype CellWriter {
+		at: cell J1;
+		write: ["Zeitzone"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_10Writer;
+		to: Column_11Writer;
+	}
+
+	block Column_11Writer oftype CellWriter {
+		at: cell K1;
+		write: ["DST"];
+	}
+//
+
+// 
+    pipe {
+		from: Column_11Writer;
+		to: Column_12Writer;
+	}
+
+	block Column_12Writer oftype CellWriter {
+		at: cell L1;
+		write: ["Zeitzonen-Datenbank"];
+	}
+//
+
+	pipe {
+	   	from: Column_12Writer;
+	   	to: AirportsTableInterpreter;
+	}
+
+
+	// convert csvfile to table with column types as per metadata
+	block AirportsTableInterpreter oftype TableInterpreter {
+		header: true;
+		columns: [
+			"Lfd. Nummer" oftype integer,
+            "Name des Flughafens" oftype text,
+            "Ort" oftype text,
+            "Land" oftype text,
+            "IATA" oftype text,
+            "ICAO" oftype text,
+            "Latitude" oftype decimal,
+            "Longitude" oftype decimal,
+            "Altitude" oftype integer,
+            "Zeitzone" oftype decimal,
+            "DST" oftype text,
+            "Zeitzonen-Datenbank" oftype text,
+            "geo_punkt" oftype text
+		];
+	}
+
+	pipe {
+		from: AirportsTableInterpreter;
+		to: AirportsLoader;
+	}
+
+	// load data into sqlite
+	block AirportsLoader oftype SQLiteLoader {
+		table: "airports";
+		file: "./airports.sqlite";
+	}
+}
