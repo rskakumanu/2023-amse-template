@@ -1,0 +1,25 @@
+name: Project_Step5_CI_Implementation
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - project/**
+
+jobs:
+  CI_Implementation:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    # Print GitHub Workspace
+    - name: Print GITHUB_WORKSPACE
+      run: echo ${GITHUB_WORKSPACE}
+
+    # Run Continuous Integration
+    - name: CI Test
+      run: |
+        ./project/tests.sh
+              

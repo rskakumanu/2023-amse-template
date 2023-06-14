@@ -1,3 +1,4 @@
+#!/bin/bash
 # Run the pipeline with the -r flag, forcing it to load fresh data
 python ./data/data_pipeline.py -r
 
