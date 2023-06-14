@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run the pipeline with the -r flag, forcing it to load fresh data
-python ./data/data_pipeline.py -r
+python ./project/data/data_pipeline.py -r
 
 # Check if the pipeline was successful in creating the output file
 # EXPECTED_OUTPUT_FILE="./data/db_Saki.db"
@@ -13,4 +13,4 @@ python ./data/data_pipeline.py -r
 # echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
 
 # Run unit tests
-python ./data/unit_test.py
+python ./project/data/unit_test.py
