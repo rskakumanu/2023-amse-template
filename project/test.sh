@@ -12,6 +12,5 @@ fi
 
 echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
 
-
 # Run unit tests
 python ./data/unit_test.py
