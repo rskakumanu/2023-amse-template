@@ -1,4 +1,4 @@
-name: Exercise Feedback
+name: project5_ci.yml
 
 on:
   push:
@@ -23,6 +23,6 @@ jobs:
         python-version: 3.11
 
     # Run exercise feedback
-    - name: Exercise feedback
+    - name: project5_ci
       run: |
         ./project/test.sh
