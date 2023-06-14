@@ -1,30 +1,25 @@
-name: Project5_CI
+name: Project_Step5_CI_Implementation
 
 on:
   push:
     branches:
-    - main
+      - main
     paths:
-    - project/**
+      - project/**
 
 jobs:
   CI_Implementation:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    # Install python
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      # Print GitHub Workspace
+      - name: Print GITHUB_WORKSPACE
+        run: echo ${GITHUB_WORKSPACE}
       
-    # Print GitHub Workspace
-    - name: Print GITHUB_WORKSPACE
-      run: echo ${GITHUB_WORKSPACE}
-
-    # Run Continuous Integration
-    - name: CI Test
-      run: |
-        ./project/test.sh
+      # Run Continuous Integration
+      - name: CI Test
+        run: |
+          ./project/test.sh
+          
