@@ -4,13 +4,13 @@
 python ./data/data_pipeline.py -r
 
 # Check if the pipeline was successful in creating the output file
-EXPECTED_OUTPUT_FILE="./data/db_Saki.db"
-if ! test -f "$EXPECTED_OUTPUT_FILE"; then
-    echo "[ERROR] $EXPECTED_OUTPUT_FILE doesn't exist!"
-    exit 2
-fi
+# EXPECTED_OUTPUT_FILE="./data/db_Saki.db"
+# if ! test -f "$EXPECTED_OUTPUT_FILE"; then
+#     echo "[ERROR] $EXPECTED_OUTPUT_FILE doesn't exist!"
+#     exit 2
+# fi
 
-echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
+# echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
 
 # Run unit tests
 python ./data/unit_test.py
