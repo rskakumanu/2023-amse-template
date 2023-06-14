@@ -18,7 +18,7 @@ def extract_load(file_name, table_name, url_path = None):
     conn = sqlite3.connect("db_Saki.db")
     data.to_sql(table_name, conn, if_exists="replace", index= False)
     conn.close()
- 
+  
 
 url_speed = "https://offenedaten-koeln.de/sites/default/files/Geschwindigkeit%C3%BCberwachung_Koeln_Gesamt_2017-2021.csv"
 file_speed = "Geschwindigkeitüberwachung_Koeln_Gesamt_2017-2021.csv"
