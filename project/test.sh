@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+# if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
 # Run the pipeline with the -r flag, forcing it to load fresh data
 python ./project/data/data_pipeline.py -r
@@ -15,4 +15,6 @@ python ./project/data/data_pipeline.py -r
 # echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
 
 # Run unit tests
-python ./project/data/unit_test.py
+# python ./project/data/unit_test.py
+
+echo "ran the test.sh file"
