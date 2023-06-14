@@ -6,7 +6,7 @@ import urllib.request
 import zipfile
 import kaggle
 import subprocess
-
+ 
 
 def extract_load(file_name, table_name, url_path = None):
     

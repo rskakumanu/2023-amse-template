@@ -11,7 +11,7 @@ python ./project/data/data_pipeline.py -r
 #     echo "[ERROR] $EXPECTED_OUTPUT_FILE doesn't exist!"
 #     exit 2
 # fi
-
+ 
 # echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
 
 # Run unit tests
