@@ -1,0 +1,7 @@
+numpy
+pandas
+sqlite3
+urllib
+zipfile
+kaggle
+subprocess
