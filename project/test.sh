@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
 # Run the pipeline with the -r flag, forcing it to load fresh data
 python ./project/data/data_pipeline.py -r
 
