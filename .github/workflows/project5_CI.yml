@@ -1,31 +1,28 @@
-name: Project_Step5_CI_Implementation
+name: Exercise Feedback
 
 on:
   push:
     branches:
-      - main
+    - main
     paths:
-      - project/**
+    - project/**
 
 jobs:
-  CI_Implementation:
+  exercise-feedback:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        
-      # Print GitHub Workspace
-      - name: Print GITHUB_WORKSPACE
-        run: echo ${GITHUB_WORKSPACE}
-      
-      # Install python
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-      
-      # Run Continuous Integration
-      - name: CI Test
-        run: |
-          ./project/test.sh
-          
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: main
+
+    # Install python
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    # Run exercise feedback
+    - name: Exercise feedback
+      run: |
+        ./project/test.sh
