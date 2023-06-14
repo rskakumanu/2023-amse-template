@@ -14,7 +14,7 @@ def extract_load(file_name, table_name, url_path = None):
         data = pd.read_csv(file_name, delimiter=";", skip_blank_lines= True, on_bad_lines='skip', low_memory= False)
     else:
         data = pd.read_csv(file_name, delimiter=",")
-
+ 
     conn = sqlite3.connect("db_Saki.db")
     data.to_sql(table_name, conn, if_exists="replace", index= False)
     conn.close()
