@@ -28,4 +28,3 @@ jobs:
     - name: CI Test
       run: |
         ./project/test.sh
-              
