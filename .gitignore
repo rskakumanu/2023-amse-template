@@ -3,3 +3,5 @@
 *.zip
 *.txt
 *.html
+exercises/trainstops.sqlite
+exercises/airports.sqlite

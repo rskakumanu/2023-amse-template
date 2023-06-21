@@ -1,0 +1,77 @@
+pipeline CarsDataPipeline {
+    CarsExtractor // download data from the link provided
+    -> CarsFileEncoding // To ensure the umlauts are present
+    -> MetadataRemover // Remove the mentioned rows from the data
+    -> CarsCSVInterpreter // delimit into columns
+    -> ColumnsRename // Rename the columns as prescribed
+    -> CarsTableInterpreter
+    -> FinalDatatoSQLiteLoader;
+
+    block CarsExtractor oftype HttpExtractor {
+        url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46251-0021_00.csv";
+    }
+
+
+    block CarsFileEncoding oftype TextFileInterpreter {
+        encoding: "ascii";
+    }
+
+    block CarsCSVInterpreter oftype CSVInterpreter {
+        delimiter: ";";
+    }
+
+    block MetadataRemover oftype TextLineDeleter {
+        lines: [1, 2, 3, 4, 5, 6, 484, 485, 486, 487];
+    }
+
+
+    block ColumnsRename oftype CellWriter 
+    {
+        at: range A1:J1;
+        write: ["date", "CIN","name","petrol","diesel","gas","electro","hybrid","plugInHybrid","others"];
+    }
+    
+    valuetype CIN oftype text {
+        constraints: [ CIN_Validation ];
+    }
+
+    // Must be strings with 5 characters and can have a leading 0
+    constraint CIN_Validation oftype LengthConstraint {
+        minLength: 5;
+        maxLength: 5;
+    }
+
+    // All other columns should be positive integers
+    valuetype PositiveInteger oftype decimal {
+        constraints: [ PositiveInteger_Val ];
+    }
+    
+    // RangeConstraint passes positive integers only
+    constraint PositiveInteger_Val oftype RangeConstraint {
+        lowerBound: 1;
+        lowerBoundInclusive: true;
+    }
+
+    // The mentioned columns are deleted
+    block CarsTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+            "date" oftype text,
+            "CIN" oftype CIN,
+            "name" oftype text,
+            "petrol" oftype PositiveInteger,
+            "diesel" oftype PositiveInteger,
+            "gas" oftype PositiveInteger,
+            "electro" oftype PositiveInteger,
+            "hybrid" oftype PositiveInteger,
+            "plugInHybrid" oftype PositiveInteger,
+            "others" oftype PositiveInteger
+        ];
+    }
+
+    // Write to SQLite database
+    block FinalDatatoSQLiteLoader oftype SQLiteLoader {
+        table: "cars";
+        file: "cars.sqlite";
+    }
+}
