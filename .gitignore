@@ -1,7 +1,12 @@
 *.csv
 *.db
 *.zip
-*.txt
 *.html
-exercises/trainstops.sqlite
+project/data/stundenwerte_EB_02667_hist
+project/data/stundenwerte_FF_02667_hist
+project/data/stundenwerte_RR_02667_hist
+project/data/stundenwerte_SD_02667_hist
+project/data/stundenwerte_TU_02667_hist
 exercises/airports.sqlite
+exercises/airports.sqlite
+exercises/cars.sqlite
