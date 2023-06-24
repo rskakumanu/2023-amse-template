@@ -1,20 +1,10 @@
 #!/bin/bash
 
-# if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+# Execute data_pipeline.py script with -r flag to load fresh data
+python ./data/data_pipeline.py -r
 
-# Run the pipeline with the -r flag, forcing it to load fresh data
-python ./project/data/data_pipeline.py -r
+# Execute unit_test.py script to run unit tests
+python ./data/unit_test.py
 
-# Check if the pipeline was successful in creating the output file
-# EXPECTED_OUTPUT_FILE="./data/db_Saki.db"
-# if ! test -f "$EXPECTED_OUTPUT_FILE"; then
-#     echo "[ERROR] $EXPECTED_OUTPUT_FILE doesn't exist!"
-#     exit 2
-# fi
- 
-# echo "[SUCCESS] $EXPECTED_OUTPUT_FILE exists."
-
-# Run unit tests
-# python ./project/data/unit_test.py
-
+# Print message indicating that the test.sh file was executed
 echo "ran the test.sh file"
