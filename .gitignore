@@ -18,3 +18,7 @@ data/stundenwerte_FF_02667_hist
 data/stundenwerte_RR_02667_hist
 data/stundenwerte_SD_02667_hist
 data/stundenwerte_TU_02667_hist
+project/data/data.sqlite
+project/.ipynb_checkpoints/exploration-checkpoint.ipynb
+project/.ipynb_checkpoints/report-checkpoint.ipynb
+project/.ipynb_checkpoints/test-checkpoint.ipynb
