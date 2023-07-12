@@ -1,0 +1,67 @@
+pipeline TimetableStopsFludaPipeline {
+    TTDataExtractor // provided the download link
+    -> ZipInterpreter // file type to interpret
+    -> PickStopsFile // select the stops.txt from list of files
+    -> StopsFileInterpreter // converting file to text type file
+    -> StopsFileCSVInterpreter // into csv file 
+    -> StopsTableInterpreter // setting integer types as defined in exercise
+    -> LoadStopsData; // load it to the sqlite database
+
+    block TTDataExtractor oftype HttpExtractor { 
+        url: "https://gtfs.rhoenenergie-bus.de/GTFS.zip"; 
+        }
+
+    block ZipInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+        }
+
+    block PickStopsFile oftype FilePicker {
+        path: "/stops.txt"; // not using the '.' dot as mentioned in documentation
+        }
+
+    block StopsFileInterpreter oftype TextFileInterpreter {
+        // encoding file to textfile with "utf-8" format
+        }
+
+    block StopsFileCSVInterpreter oftype CSVInterpreter {
+        enclosing: '"'; 
+		enclosingEscape: '"';
+        }
+
+    constraint StopsAllowed oftype RangeConstraint {
+        lowerBound: 2001;
+        lowerBoundInclusive: true;
+        upperBound: 2001;
+        upperBoundInclusive: true;
+        }
+
+    valuetype Zone2001Id oftype integer {
+        constraints: [StopsAllowed];
+        }
+
+    valuetype GeoCoordinate oftype decimal {
+        constraints: [IntervalOfCoordinates];
+        }
+
+    constraint IntervalOfCoordinates oftype RangeConstraint {
+        lowerBound: -90;
+        lowerBoundInclusive: true;
+        upperBound: 90;
+        upperBoundInclusive: true;
+        }
+
+    block StopsTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+            "stop_id" oftype integer,
+            "stop_name" oftype text,
+            "stop_lat" oftype GeoCoordinate,
+            "stop_lon" oftype GeoCoordinate,
+            "zone_id" oftype Zone2001Id];
+        }
+
+    block LoadStopsData oftype SQLiteLoader {
+        table: "stops";
+        file: "./gtfs.sqlite";
+        }
+}
